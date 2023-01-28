@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Home = () => {
+const Home = ({setFunctin}) => {
     const [data, setData] = useState([])
     const navigate = useNavigate()
     useEffect(() => {
@@ -14,16 +14,16 @@ const Home = () => {
             })
     }, [])
     const [selectedData, setSelectedData] = useState('')
-    console.log(selectedData)
 
     const toGride = ()=>{
+        setFunctin(selectedData)
         navigate('/grid')
     }
     return (
         <div className='parent'>
             
             <select value={selectedData} onChange={e => setSelectedData(e.target.value)}>
-                <option  > --Please select the user Data --</option>
+                <option > --Please select the user Data --</option>
                 {
                     data.map((Cur) => {
                         return (
